@@ -1,7 +1,8 @@
 class Assets {
   Assets._();
 
-  static const String programmer3 = 'assets/images/programmer-3.gif';
+  static const String programmer3 = 'assets/images/ja.jpg';
+  static const String background = 'assets/images/background.jpg';
 
   // social icons
   static const String dribble = 'assets/icons/ic_dribbble.png';
