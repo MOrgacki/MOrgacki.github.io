@@ -12,60 +12,20 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Color(0xff101010),
-        child: Stack(children: <Widget>[
-          DecoratedBox(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(Assets.background), fit: BoxFit.cover),
-            ),
-          ),
-          Container(
-              child: Align(
-                  child: Container(
-            width: 950.0,
-            height: 750.0,
-            decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              color: Colors.black,
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black,
-                    spreadRadius: 3,
-                    blurRadius: 15,
-                    offset: Offset(4.0, 4.0)),
-                BoxShadow(
-                    color: Colors.black,
-                    spreadRadius: 3,
-                    blurRadius: 15,
-                    offset: Offset(-4.0, -4.0))
-              ],
-              gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                stops: [0.1, 0.5, 0.7, 0.9],
-                colors: [
-                  Color(0xff000000),
-                  Color(0xff000000),
-                  Color(0xff010101),
-                  Color(0xff101010),
-                ],
-              ),
-            ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: (ScreenUtil.getInstance().setWidth(28))), //144
-              child: Scaffold(
-                backgroundColor: Colors.transparent,
-                appBar: _buildAppBar(context),
-                drawer: _buildDrawer(context),
-                body: LayoutBuilder(builder: (context, constraints) {
-                  return _buildBody(context, constraints);
-                }),
-              ),
-            ),
-          )))
-        ]));
+      color: Color(0xFFF7F8FA),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+            horizontal: (ScreenUtil.getInstance().setWidth(108))), //144
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: _buildAppBar(context),
+          drawer: _buildDrawer(context),
+          body: LayoutBuilder(builder: (context, constraints) {
+            return _buildBody(context, constraints);
+          }),
+        ),
+      ),
+    );
   }
 
   //AppBar Methods:-------------------------------------------------------------
@@ -75,9 +35,6 @@ class HomePage extends StatelessWidget {
       title: _buildTitle(),
       backgroundColor: Colors.transparent,
       elevation: 0.0,
-      iconTheme: IconThemeData(
-        color: Color(0xFFeab13f),
-      ),
       actions:
           !ResponsiveWidget.isSmallScreen(context) ? _buildActions() : null,
     );
@@ -100,7 +57,7 @@ class HomePage extends StatelessWidget {
           TextSpan(
             text: Strings.o,
             style: TextStyles.logo.copyWith(
-              color: Color(0xFFeab13f),
+              color: Color(0xFF50AFC0),
             ),
           ),
         ],
@@ -114,7 +71,7 @@ class HomePage extends StatelessWidget {
         child: Text(
           Strings.menu_home,
           style: TextStyles.menu_item.copyWith(
-            color: Color(0xFFeab13f),
+            color: Color(0xFF50AFC0),
           ),
         ),
         onPressed: () {},
@@ -138,16 +95,12 @@ class HomePage extends StatelessWidget {
 
   Widget _buildDrawer(BuildContext context) {
     return ResponsiveWidget.isSmallScreen(context)
-        ? Theme(
-            data: Theme.of(context).copyWith(
-              canvasColor: Colors.grey[700],
+        ? Drawer(
+            child: ListView(
+              padding: const EdgeInsets.all(20),
+              children: _buildActions(),
             ),
-            child: Drawer(
-              child: ListView(
-                padding: const EdgeInsets.all(20),
-                children: _buildActions(),
-              ),
-            ))
+          )
         : null;
   }
 
@@ -229,7 +182,7 @@ class HomePage extends StatelessWidget {
   Widget _buildIllustration() {
     return Image.network(
       Assets.programmer3,
-      height: ScreenUtil.getInstance().setWidth(245), //480.0
+      height: ScreenUtil.getInstance().setWidth(345), //480.0
     );
   }
 
@@ -281,7 +234,7 @@ class HomePage extends StatelessWidget {
           TextSpan(
             text: Strings.me,
             style: TextStyles.heading.copyWith(
-              color: Color(0xFFeab13f),
+              color: Color(0xFF50AFC0),
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
             ),
           ),
@@ -328,16 +281,18 @@ class HomePage extends StatelessWidget {
 
   // Skills Methods:------------------------------------------------------------
   final skills = [
-    'Codeception',
-    'PHP',
+    'Java',
+    'Kotlin',
     'Dart',
     'Flutter',
-    'Postman',
-    'JavaScript',
-    'Cypress',
-    'REST',
-    'CI/CD',
-    'Docker',
+    'Android',
+    'iOS',
+    'Xamarin',
+    'Reactive Programming',
+    'Jenkins',
+    'Photoshop',
+    'JFrog Atrtifactory',
+    'Code Magic',
   ];
 
   Widget _buildSkills(BuildContext context) {
@@ -380,16 +335,22 @@ class HomePage extends StatelessWidget {
   // Education Methods:---------------------------------------------------------
   final educationList = [
     Education(
-      'Sep 2019',
+      'Apr 2018',
       'Present',
-      'Codelabs.rocks',
-      'QA Specialist',
+      'Embrace-it Pakistan',
+      'Sr. Software Engineer',
     ),
     Education(
-      'Sep 2018',
-      'Sep 2019',
-      'CODFUSION Sp. z o.o.',
-      'Software Tester',
+      'Apr 2016',
+      'Apr 2018',
+      'TEO International',
+      'Sr. Software Engineer',
+    ),
+    Education(
+      'July 2014',
+      'March 2016',
+      'Citrusbits',
+      'Software Engineer',
     ),
   ];
 
@@ -414,7 +375,7 @@ class HomePage extends StatelessWidget {
 
   Widget _buildEducationSummary() {
     return Text(
-      'Over 2 years ensuring product Quality. 1.5 year exprience in Test Automation.   ',
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
       style: TextStyles.body,
     );
   }
@@ -439,7 +400,7 @@ class HomePage extends StatelessWidget {
           Text(
             '${education.organization}',
             style: TextStyles.body.copyWith(
-              color: Colors.white,
+              color: Color(0xFF45405B),
             ),
           ),
           Text(
@@ -493,12 +454,12 @@ class HomePage extends StatelessWidget {
       children: <Widget>[
         GestureDetector(
           onTap: () {
-            html.window.open(
-                "https://www.linkedin.com/in/marcin-orgacki/", "LinkedIn");
+            html.window
+                .open("https://www.linkedin.com/in/zubairehman/", "LinkedIn");
           },
           child: Image.network(
             Assets.linkedin,
-            color: Colors.white,
+            color: Color(0xFF45405B),
             height: 20.0,
             width: 20.0,
           ),
@@ -506,11 +467,23 @@ class HomePage extends StatelessWidget {
         SizedBox(width: 16.0),
         GestureDetector(
           onTap: () {
-            html.window.open("https://github.com/MOrgacki", "Github");
+            html.window.open("https://medium.com/@zubairehman.work", "Medium");
+          },
+          child: Image.network(
+            Assets.evernote,
+            color: Color(0xFF45405B),
+            height: 20.0,
+            width: 20.0,
+          ),
+        ),
+        SizedBox(width: 16.0),
+        GestureDetector(
+          onTap: () {
+            html.window.open("https://github.com/zubairehman", "Github");
           },
           child: Image.network(
             Assets.google,
-            color: Colors.white,
+            color: Color(0xFF45405B),
             height: 20.0,
             width: 20.0,
           ),
@@ -518,11 +491,11 @@ class HomePage extends StatelessWidget {
         SizedBox(width: 16.0),
         GestureDetector(
           onTap: () {
-            html.window.open("mailto:marcinorgacki@gmail.com", "Gmail");
+            html.window.open("https://twitter.com/zubair340", "Twitter");
           },
           child: Image.network(
             Assets.twitter,
-            color: Colors.white,
+            color: Color(0xFF45405B),
             height: 20.0,
             width: 20.0,
           ),
